@@ -1,0 +1,99 @@
+/* AXON website styles. Fonts are self-hosted (see fonts/). */
+@font-face{font-family:"Chakra Petch";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/chakra-petch-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"Chakra Petch";font-style:normal;font-weight:600;font-display:swap;src:url(fonts/chakra-petch-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:"Chakra Petch";font-style:normal;font-weight:700;font-display:swap;src:url(fonts/chakra-petch-latin-700-normal.woff2) format("woff2")}
+@font-face{font-family:"Figtree";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/figtree-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Figtree";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/figtree-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"Figtree";font-style:normal;font-weight:600;font-display:swap;src:url(fonts/figtree-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:"JetBrains Mono";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/jetbrains-mono-latin-500-normal.woff2) format("woff2")}
+:root{--bg:#050b12;--panel:#0a1622;--line:#1d5468;--text:#d8f3ff;--muted:#7fa3b3;--accent:#33e1ff;--c2:#ffb547;--good:#3ee0a0;--ink:#061017;
+  --grid:color-mix(in srgb,var(--line) 20%,transparent);--soft:color-mix(in srgb,var(--line) 60%,transparent);color-scheme:dark}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--bg:#f3f6f9;--panel:#fff;--line:#c6d5e0;--text:#0f2230;--muted:#557080;--accent:#0a7fc0;--c2:#b86e00;--good:#138a5b;--ink:#fff;color-scheme:light}}
+:root[data-theme="light"]{--bg:#f3f6f9;--panel:#fff;--line:#c6d5e0;--text:#0f2230;--muted:#557080;--accent:#0a7fc0;--c2:#b86e00;--good:#138a5b;--ink:#fff;color-scheme:light}
+body{transition:background-color .35s,color .35s}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 "Figtree",system-ui,sans-serif;-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(1000px 520px at 75% -10%,color-mix(in srgb,var(--accent) 12%,transparent),transparent 60%),linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:auto,44px 44px,44px 44px}
+a{color:var(--accent)}
+h1,h2,h3{font-family:"Chakra Petch",sans-serif;line-height:1.08;margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;font-family:"Chakra Petch";font-weight:700;letter-spacing:.24em;font-size:19px;text-decoration:none;color:var(--text)}
+.brand-ic{width:36px;height:36px;display:block;flex:none}
+.brand-ic .tile{fill:var(--bg);stroke:var(--line);stroke-width:.6}
+.brand-ic g{color:var(--accent);transition:color .35s}
+.brand-ic .tile{transition:fill .35s}
+.brand-ic .spark{animation:spark 2.8s ease-in-out infinite}
+@keyframes spark{50%{opacity:.45}}
+@media (prefers-reduced-motion: reduce){.brand-ic .spark{animation:none}}
+.navlinks{display:flex;gap:18px;align-items:center;font-weight:600;font-size:.95rem}
+.navlinks a{color:var(--muted);text-decoration:none}
+.navlinks a:hover{color:var(--text)}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:"Chakra Petch";font-weight:700;letter-spacing:.04em;padding:14px 22px;border-radius:6px;text-decoration:none;border:1px solid var(--line);color:var(--text);background:color-mix(in srgb,var(--panel) 85%,transparent)}
+.btn.primary{background:var(--accent);color:var(--ink);border-color:var(--accent);box-shadow:0 0 30px -8px color-mix(in srgb,var(--accent) 70%,transparent)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn svg{width:20px;height:20px}
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center;padding:48px 0 30px}
+.eyebrow{font-family:"JetBrains Mono";font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+.hero h1{font-size:clamp(2.4rem,5.4vw,4.1rem);margin:14px 0 18px;letter-spacing:-.01em}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p.lead{font-size:1.15rem;color:var(--muted);max-width:52ch;margin:0 0 26px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.fine{font-size:.85rem;color:var(--muted);margin-top:12px}
+.shot{border:1px solid var(--soft);border-radius:10px;overflow:hidden;box-shadow:0 30px 80px -30px rgba(0,0,0,.6),0 0 40px -18px color-mix(in srgb,var(--accent) 60%,transparent);position:relative;background:var(--panel)}
+.shot img{display:block;width:100%;height:auto;transition:opacity .25s}
+.shot img.swapping{opacity:.15}
+.badges{display:flex;flex-wrap:wrap;gap:10px;margin:28px 0 0}
+.badge{border:1px solid var(--soft);border-radius:999px;padding:6px 14px;font-size:.88rem;font-weight:600;background:color-mix(in srgb,var(--panel) 80%,transparent)}
+.badge b{color:var(--good)}
+section{padding:70px 0 10px}
+section > .wrap > h2{font-size:clamp(1.8rem,3.4vw,2.6rem);margin-bottom:10px}
+section > .wrap > p.sub{color:var(--muted);max-width:62ch;margin:0 0 34px;font-size:1.06rem}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:color-mix(in srgb,var(--panel) 92%,transparent);border:1px solid var(--soft);border-radius:8px;padding:22px;position:relative}
+.card::before,.card::after{content:"";position:absolute;width:11px;height:11px;border:2px solid var(--accent);opacity:.8}
+.card::before{top:-1px;left:-1px;border-right:0;border-bottom:0}.card::after{bottom:-1px;right:-1px;border-left:0;border-top:0}
+.card .n{font-family:"JetBrains Mono";color:var(--accent);font-size:1.4rem}
+.card h3{font-size:1.25rem;margin:8px 0 8px}
+.card p{margin:0;color:var(--muted)}
+.tools{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.tools .card h3{font-size:1.05rem;color:var(--accent);margin:0 0 10px;letter-spacing:.04em}
+.tools ul{margin:0;padding-left:1.1rem;color:var(--text)}
+.tools li{margin:4px 0}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center}
+.list{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+.list li{display:grid;grid-template-columns:28px 1fr;gap:10px}
+.list li svg{width:22px;height:22px;color:var(--good);margin-top:3px}
+.list b{display:block}
+.list span{color:var(--muted)}
+.themes{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:10px;margin-top:18px}
+.sw{display:flex;flex-direction:column;gap:7px;padding:8px;border-radius:8px;border:1px solid var(--soft);background:color-mix(in srgb,var(--panel) 85%,transparent);color:var(--text);cursor:pointer;font:600 .82rem "Figtree",sans-serif;text-align:left;transition:border-color .15s,transform .15s}
+.sw:hover{border-color:var(--accent);transform:translateY(-2px)}
+.sw[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 0 18px -6px var(--accent)}
+.sw .chipset{display:grid;grid-template-columns:2fr 1fr 1fr;height:30px;border-radius:4px;overflow:hidden;border:1px solid rgba(127,127,127,.25)}
+.modes{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;align-items:center}
+.modes span{color:var(--muted);font-size:.9rem;margin-right:4px}
+.mode{border:1px solid var(--soft);background:transparent;color:var(--text);border-radius:999px;padding:6px 14px;font:600 .88rem "Figtree",sans-serif;cursor:pointer}
+.mode[aria-pressed="true"]{background:var(--accent);color:var(--ink);border-color:var(--accent)}
+.tryhint{font-size:.88rem;color:var(--muted);margin-top:12px}
+.reqs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.reqs .card b{font-family:"Chakra Petch";font-size:1.15rem}
+.reqs .card p{margin-top:6px}
+details{border:1px solid var(--soft);border-radius:8px;background:color-mix(in srgb,var(--panel) 92%,transparent);margin-bottom:10px}
+summary{cursor:pointer;padding:16px 18px;font-weight:600;font-size:1.04rem}
+details p{margin:0;padding:0 18px 16px;color:var(--muted)}
+.final{text-align:center;padding:80px 0}
+.final h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:14px}
+footer{border-top:1px solid var(--soft);padding:26px 0 40px;color:var(--muted);font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+@media (max-width:900px){
+  .hero,.split{grid-template-columns:1fr}
+  .tools{grid-template-columns:1fr 1fr}
+  .steps,.reqs{grid-template-columns:1fr}
+  .navlinks a:not(.btn){display:none}
+}
+@media (max-width:520px){.tools{grid-template-columns:1fr}.wrap{padding:0 16px}.btn{padding:12px 16px}}
+.sw .chipset i{display:block}
+.hash{font-family:"JetBrains Mono",monospace;font-size:.82rem;word-break:break-all;background:color-mix(in srgb,var(--panel) 85%,transparent);border:1px solid var(--soft);border-radius:6px;padding:8px 10px;display:block;margin:8px 18px 0;color:var(--text)}
+details code{font-family:"JetBrains Mono",monospace;font-size:.85rem}
