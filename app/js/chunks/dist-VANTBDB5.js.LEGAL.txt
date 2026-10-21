@@ -1,0 +1,8 @@
+Bundled license information:
+
+unpdf/dist/index.mjs:
+  /**
+  * Derived from the PDF.js project by the Mozilla Foundation.
+  * @see https://github.com/mozilla/pdf.js/blob/b8de9a372f9bbf7e33adb362eeae5ef1919dba73/src/display/canvas_factory.js#L18
+  * @license Apache-2.0
+  */

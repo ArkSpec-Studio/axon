@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" data-style="hud" data-font="tech" data-glow="on" data-motion="on">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob:; media-src 'self' blob: data:; connect-src 'self' https://huggingface.co https://*.huggingface.co https://*.hf.co https://raw.githubusercontent.com; manifest-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="theme-color" content="#050b12">
+<meta name="description" content="AXON by ArkSpec Studio: turn your course materials into study tools, right in your browser.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AXON</title>
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="mobilebar"><button class="btn icon" id="menuBtn" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button><span class="mb-title" id="mbTitle">AXON</span></header>
+<div class="navscrim" id="navScrim"></div>
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="main" id="main"></main>
+</div>
+<div class="jobs" id="jobs" aria-live="polite"></div>
+<script type="module" src="js/axon-web.js"></script>
+<script type="module" src="js/app.js"></script>
+<script type="module" src="js/sw-register.js"></script>
+</body>
+</html>
