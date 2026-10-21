@@ -6,6 +6,7 @@
 <title>AXON · Your private AI study engine</title>
 <meta name="description" content="AXON turns your course materials into summaries, flashcards, practice tests and more, with a private AI that runs on your own PC. Free for Windows.">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; manifest-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta name="author" content="ArkSpec Studio">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <link rel="icon" href="icon.png" id="favicon">
@@ -23,16 +24,16 @@
 <main>
   <div class="wrap hero">
     <div>
-      <span class="eyebrow">Study engine for Windows</span>
+      <span class="eyebrow">Study engine for Windows · by ArkSpec Studio</span>
       <h1>Your notes in.<br><em>Your best grade</em> out.</h1>
       <p class="lead">Add the materials from any class: slides, PDFs, readings, photos of your notes. Then pick what you want: summaries, flashcards, practice tests, essay feedback and more. A private AI on your own PC builds it all.</p>
       <div class="cta" id="download">
-        <a class="btn primary" href="https://github.com/Loki-2337/arkspec-studio/releases/download/v1.0.1/AXON-Setup-1.0.1.exe">
+        <a class="btn primary" href="https://github.com/Loki-2337/axon/releases/download/v1.0.2/AXON-Setup-1.0.2.exe">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
           Download for Windows</a>
         <a class="btn" href="#how">See how it works</a>
       </div>
-      <p class="fine">Free · Windows 10 &amp; 11 (64-bit) · Version 1.0.1 · 157 MB</p>
+      <p class="fine">Free · Windows 10 &amp; 11 (64-bit) · Version 1.0.2 · 157 MB</p>
       <div class="badges"><span class="badge"><b>✓</b> No account</span><span class="badge"><b>✓</b> No subscription</span><span class="badge"><b>✓</b> Notes never leave your PC</span></div>
     </div>
     <div class="shot"><img data-shot="flashcards" src="shots/axon-dark/flashcards.jpg" width="1304" height="821" alt="AXON showing AI-made flashcards for a Biology class"></div>
@@ -114,7 +115,7 @@
       <details><summary>Which files can I add?</summary><p>PDF (including scanned PDFs), Word (.docx), PowerPoint (.pptx), Excel (.xlsx), CSV, RTF, text, Markdown and HTML files, web pages (paste a link), pasted text, and photos or screenshots of notes. AXON reads the text from photos and scans for you, and marks it so you can check it.</p></details>
       <details><summary>How smart is the AI compared to ChatGPT?</summary><p>It's a smaller model, so it's tuned for one job: building study material from what you give it. It only uses your materials, which keeps questions on topic and avoids made-up facts. Larger models give better results if your PC can run them.</p></details>
       <details><summary>Does it need the internet?</summary><p>Only to download the AI model (once), to add web links, and the first time you add a photo (to download the text-recognition data). Everything else works offline.</p></details>
-      <details id="verify"><summary>How do I know the download is genuine?</summary><p>Every release has a unique fingerprint (SHA-256). After downloading, open PowerShell in your Downloads folder and run <code>Get-FileHash AXON-Setup-1.0.1.exe</code>. The result must match exactly:</p><code class="hash">855FA385242F1800DA1239C23C1DD4C30552E058FC9F3B2EFE73C66B035EF6B2</code><p>If it doesn't match, delete the file and download it again from this page only.</p></details>
+      <details id="verify"><summary>How do I know the download is genuine?</summary><p>Every release has a unique fingerprint (SHA-256). After downloading, open PowerShell in your Downloads folder and run <code>Get-FileHash AXON-Setup-1.0.2.exe</code>. The result must match exactly:</p><code class="hash">29B2993F1E8B41D6A670D8FE9C5359B16461EBCC582114068A9D48BAB1370987</code><p>If it doesn't match, delete the file and download it again from this page only.</p></details>
       <details><summary>Can I move my classes to another computer?</summary><p>Yes. Settings → Your data → Back up all classes creates one file. Restore it on the other PC.</p></details>
       <details><summary>Mac, iPhone or Android?</summary><p>AXON is Windows-only for now.</p></details>
     </div>
@@ -122,14 +123,14 @@
 
   <div class="wrap final">
     <h2>Study smarter starting tonight.</h2>
-    <a class="btn primary" href="https://github.com/Loki-2337/arkspec-studio/releases/download/v1.0.1/AXON-Setup-1.0.1.exe">
+    <a class="btn primary" href="https://github.com/Loki-2337/axon/releases/download/v1.0.2/AXON-Setup-1.0.2.exe">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
       Download AXON for Windows</a>
     <p class="fine">Free · 157 MB · Windows 10 &amp; 11</p>
   </div>
 </main>
 
-<footer><div class="wrap"><span>© 2026 AXON</span><span>Made for students. Runs on open-source AI (Qwen3, Apache 2.0) via llama.cpp.</span></div></footer>
+<footer><div class="wrap"><span>© 2026 ArkSpec Studio</span><span>Made for students. Runs on open-source AI (Qwen3, Apache 2.0) via llama.cpp.</span></div></footer>
 <script src="site.js" defer></script>
 </body>
 </html>
