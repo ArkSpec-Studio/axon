@@ -1,0 +1,638 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow,noarchive"><meta name="referrer" content="no-referrer"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style></head><body>
+<title>Body Systems Study Set</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Mono:wght@500&family=Chakra+Petch:wght@400;700&family=Figtree:wght@400;700;800&family=JetBrains+Mono:wght@400;700&family=Merriweather:wght@400;700&family=Lexend:wght@400;700&display=swap">
+<style>
+/* Layout: a single study column, like a clipboard — header, unit filter, then one working surface per tab. */
+:root {
+  --bg: #eef3f1;
+  --surface: #fbfdfc;
+  --ink: #142420;
+  --muted: #55665f;
+  --line: #cfdbd6;
+  --accent: #1f6f78;        /* scrubs teal */
+  --accent-ink: #ffffff;
+  --good: #1d7a46;
+  --bad: #b23a2e;
+  --shadow: 0 1px 2px rgba(20,36,32,.06), 0 8px 24px rgba(20,36,32,.07);
+  --f-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --f-body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1716; --surface: #16211f; --ink: #e3ece9; --muted: #98aaa4; --line: #2a3a37;
+    --accent: #5cc2c9; --accent-ink: #062022;
+    --good: #5fd08e; --bad: #f08a7c;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1716; --surface: #16211f; --ink: #e3ece9; --muted: #98aaa4; --line: #2a3a37;
+  --accent: #5cc2c9; --accent-ink: #062022;
+  --good: #5fd08e; --bad: #f08a7c;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  color-scheme: dark;
+}
+/* Derived tokens: themes from the Appearance panel only set the base colors above. */
+:root {
+  --accent-soft: color-mix(in srgb, var(--accent) 18%, var(--surface));
+  --good-soft: color-mix(in srgb, var(--good) 16%, var(--surface));
+  --bad-soft: color-mix(in srgb, var(--bad) 16%, var(--surface));
+  --c2: var(--accent);
+  --r-lg: 16px; --r-md: 10px;
+  --zoom: 1;
+}
+/* AXON's HUD style: square corners, monospace labels, accent glow. */
+:root[data-style="hud"] { --r-lg: 4px; --r-md: 3px; }
+:root[data-style="hud"] .card, :root[data-style="hud"] .q, :root[data-style="hud"] .glossary { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+:root[data-style="hud"][data-glow="on"] .card, :root[data-style="hud"][data-glow="on"] .q { box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 25%, transparent), 0 0 22px color-mix(in srgb, var(--accent) 22%, transparent); }
+:root[data-style="hud"] .tab, :root[data-style="hud"] .btn, :root[data-style="hud"] h1 { text-transform: uppercase; letter-spacing: .04em; }
+:root[data-style="hud"] .chip { border-radius: 3px; }
+:root[data-motion="off"] *, :root[data-motion="off"] *::before { transition: none !important; animation: none !important; }
+.wrap { zoom: var(--zoom); }
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink); font: 16px/1.55 var(--f-body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 20px 48px;
+}
+.wrap { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 18px; }
+header { display: flex; flex-direction: column; gap: 4px; }
+.eyebrow { font: 500 12px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+h1 { font: 800 clamp(28px, 6vw, 40px)/1.05 var(--f-display); margin: 0; text-wrap: balance; letter-spacing: -.01em; }
+.sub { color: var(--muted); margin: 0; }
+button { font: inherit; color: inherit; cursor: pointer; }
+button:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); overflow-x: auto; }
+.tab { background: none; border: 0; padding: 10px 14px; font-weight: 700; color: var(--muted); border-bottom: 3px solid transparent; margin-bottom: -1px; white-space: nowrap; }
+.tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+.units { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 5px 12px; font-size: 14px; }
+.chip[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.btn { border: 1px solid var(--line); background: var(--surface); border-radius: var(--r-md); padding: 9px 16px; font-weight: 700; }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.btn:disabled { opacity: .5; cursor: default; }
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.grow { flex: 1; }
+.muted { color: var(--muted); }
+.mono { font-family: var(--f-mono); font-size: 13px; font-variant-numeric: tabular-nums; }
+.panel { display: flex; flex-direction: column; gap: 14px; }
+
+/* Flashcards */
+.card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow);
+  min-height: 260px; padding: 28px 24px; display: flex; flex-direction: column; gap: 12px; justify-content: center;
+  text-align: left; width: 100%;
+}
+.card .side { font: 500 12px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.card .front { font: 800 clamp(24px, 5vw, 32px)/1.15 var(--f-display); text-wrap: balance; }
+.card .front.def { font: 400 20px/1.5 var(--f-body); }
+.card .back { font-size: 18px; border-top: 1px dashed var(--line); padding-top: 12px; }
+.card .back.term { font: 800 26px/1.2 var(--f-display); }
+.card ul { margin: 0; padding-left: 20px; }
+.tagline { display: flex; gap: 8px; align-items: center; }
+.tag { font: 500 11px/1 var(--f-mono); text-transform: uppercase; letter-spacing: .06em; padding: 4px 7px; border-radius: 6px; background: var(--accent-soft); color: var(--ink); }
+
+/* Quiz */
+.q { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow); padding: 22px; display: flex; flex-direction: column; gap: 14px; }
+.q .prompt { font: 400 19px/1.45 var(--f-body); }
+.q .prompt b { font-family: var(--f-display); font-weight: 800; font-size: 24px; }
+.opts { display: flex; flex-direction: column; gap: 8px; }
+.opt { display: flex; gap: 12px; align-items: flex-start; text-align: left; border: 1px solid var(--line); background: var(--bg); border-radius: var(--r-md); padding: 12px 14px; }
+.opt .k { font: 500 13px/1.6 var(--f-mono); color: var(--muted); }
+.opt.right { background: var(--good-soft); border-color: var(--good); }
+.opt.wrong { background: var(--bad-soft); border-color: var(--bad); }
+.opt:disabled { cursor: default; }
+.feedback { border-radius: var(--r-md); padding: 12px 14px; background: var(--bg); border: 1px solid var(--line); }
+.feedback strong.ok { color: var(--good); }
+.feedback strong.no { color: var(--bad); }
+.bar { height: 6px; background: var(--line); border-radius: 99px; overflow: hidden; }
+.bar > i { display: block; height: 100%; background: var(--accent); width: 0; transition: width .3s; }
+.missed { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+label.field { display: flex; flex-direction: column; gap: 4px; font-size: 14px; color: var(--muted); }
+select { font: inherit; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md); padding: 8px 10px; }
+
+/* Appearance panel */
+.topbar { display: flex; align-items: flex-start; gap: 12px; }
+.topbar header { flex: 1; min-width: 0; }
+.appear { position: fixed; inset: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 55%, transparent); display: flex; justify-content: center; align-items: flex-start; overflow-y: auto;
+  padding: calc(24px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) 24px max(16px, env(safe-area-inset-left, 0px)); }
+.appear .sheet { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow); width: 100%; max-width: 620px; padding: 20px; display: flex; flex-direction: column; gap: 16px; }
+.appear h2 { font: 800 22px/1.2 var(--f-display); margin: 0; }
+.appear h3 { font: 700 15px/1.2 var(--f-body); margin: 0; }
+.optrow { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.optrow .lab { font-size: 14px; color: var(--muted); min-width: 72px; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: var(--r-md); overflow: hidden; }
+.seg button { border: 0; background: var(--surface); padding: 7px 12px; font-size: 14px; }
+.seg button + button { border-left: 1px solid var(--line); }
+.seg button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+.presets { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; }
+.preset { display: flex; flex-direction: column; gap: 6px; text-align: left; border: 1px solid var(--line); background: var(--bg); border-radius: var(--r-md); padding: 8px; font-size: 14px; }
+.preset[aria-pressed="true"] { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent); }
+.preset .sw { display: flex; height: 22px; border-radius: 4px; overflow: hidden; border: 1px solid var(--line); }
+.preset .sw i { flex: 1; }
+.preset .pacts { display: flex; gap: 8px; font-size: 12px; }
+.linkbtn { background: none; border: 0; padding: 0; color: var(--accent); text-decoration: underline; font-size: 12px; }
+.colors { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
+.colors label { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+.colors input[type="color"] { width: 36px; height: 28px; border: 1px solid var(--line); border-radius: 6px; background: none; padding: 0; }
+.field { font: inherit; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: var(--r-md); padding: 8px 10px; min-width: 0; flex: 1; }
+.editor:empty { display: none; }
+.editor { border-top: 1px dashed var(--line); padding-top: 14px; display: flex; flex-direction: column; gap: 12px; }
+
+/* All terms */
+.glossary { display: flex; flex-direction: column; gap: 0; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); }
+.gitem { display: grid; grid-template-columns: minmax(0, 200px) minmax(0, 1fr); gap: 16px; padding: 12px 18px; border-top: 1px solid var(--line); }
+.gitem:first-child { border-top: 0; }
+.gitem dt { font: 800 17px/1.3 var(--f-display); }
+.gitem dd { margin: 0; }
+.gitem ul { margin: 0; padding-left: 18px; }
+@media (max-width: 560px) { .gitem { grid-template-columns: 1fr; gap: 4px; } }
+@media (prefers-reduced-motion: reduce) { .bar > i { transition: none; } }
+</style>
+
+<div class="wrap">
+  <div class="topbar">
+    <header>
+      <span class="eyebrow">Nursing assistant · Body systems</span>
+      <h1>Body Systems Study Set</h1>
+      <p class="sub">Every card and question comes straight from the class notes. Quiz questions are built from the notes' own definitions, so each one has exactly one right answer.</p>
+    </header>
+    <button class="btn" id="open-appear" type="button">Appearance</button>
+  </div>
+  <div class="appear" id="appear" hidden><div class="sheet" id="appear-sheet" role="dialog" aria-modal="true" aria-label="Appearance"></div></div>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab" role="tab" id="tab-cards" data-view="cards">Flashcards</button>
+    <button class="tab" role="tab" id="tab-quiz" data-view="quiz">Multiple choice</button>
+    <button class="tab" role="tab" id="tab-terms" data-view="terms">All terms</button>
+  </nav>
+
+  <div class="units" id="units" aria-label="Filter by body system"></div>
+
+  <section class="panel" id="view-cards" hidden></section>
+  <section class="panel" id="view-quiz" hidden></section>
+  <section class="panel" id="view-terms" hidden></section>
+</div>
+
+<script>
+const UNITS = {
+  intro: "Introduction", integ: "Integumentary", musc: "Musculoskeletal", nerv: "Nervous",
+  circ: "Circulatory", resp: "Respiratory", uri: "Urinary", gi: "Gastrointestinal",
+  endo: "Endocrine", repro: "Reproductive", imm: "Immune & lymphatic",
+};
+// [unit, term, definition, kind]  kind: t = key term, c = condition/concept, l = list (flashcards only)
+const DATA = [
+  ["intro","homeostasis","The condition in which all of the body's systems are working at their best.","t"],
+  ["intro","metabolism","Physical and chemical processes by which substances are broken down or transformed into energy or products for use by the body.","t"],
+  ["intro","signs","What the nursing assistant actually sees, hears, feels, or smells.","c"],
+  ["intro","symptoms","Things the nursing assistant cannot see directly; they are reported by the resident who experiences them.","c"],
+  ["intro","body systems","Made up of organs; interdependent (depend on each other to function); work together to maintain homeostasis.","c"],
+  ["integ","skin (integument)","The body's natural protective covering, and the largest organ in the human body.","c"],
+  ["musc","atrophy","The wasting away, decreasing in size, and weakening of muscles from lack of use.","t"],
+  ["musc","autoimmune illness","An illness in which the body's immune system attacks normal tissue in the body.","t"],
+  ["musc","contracture","The permanent and often painful shortening of a muscle or tendon, usually due to lack of activity.","t"],
+  ["musc","full weight-bearing (FWB)","A doctor's order stating that a person has the ability to support full body weight (100%) on both legs.","t"],
+  ["musc","inflammation","Swelling.","t"],
+  ["musc","menopause","The end of menstruation; occurs when a woman has not had a menstrual period for 12 months.","t"],
+  ["musc","non-weight-bearing (NWB)","A doctor's order stating that a person is unable to touch the floor or support any body weight on one or both legs.","t"],
+  ["musc","osteoarthritis","Common type of arthritis that usually affects the hips, knees, fingers, thumbs, and spine; also called degenerative joint disease (DJD) or degenerative arthritis.","t"],
+  ["musc","osteoporosis","A disease that causes bones to become porous and brittle, causing them to break easily.","t"],
+  ["musc","partial weight-bearing (PWB)","A doctor's order stating that a person is able to support some body weight on one or both legs.","t"],
+  ["musc","rheumatoid arthritis","A type of arthritis in which joints become inflamed, red, swollen, and very painful, resulting in restricted movement and possible deformities.","t"],
+  ["musc","arthritis","Can cause stiffness, pain, and decreased mobility; may be caused by aging, injury, or autoimmune illness; pain and stiffness increase in cold or damp weather.","c"],
+  ["nerv","dysphagia","Difficulty swallowing.","t"],
+  ["nerv","emotional lability","Inappropriate or unprovoked emotional responses, including laughing, crying, and anger.","t"],
+  ["nerv","expressive aphasia","Trouble communicating thoughts through speech or writing.","t"],
+  ["nerv","gait","Manner of walking.","t"],
+  ["nerv","hemiparesis","Weakness on one side of the body.","t"],
+  ["nerv","hemiplegia","Paralysis on one side of the body.","t"],
+  ["nerv","paraplegia","Loss of function of lower body and legs.","t"],
+  ["nerv","quadriplegia","Loss of function of legs, trunk, and arms.","t"],
+  ["nerv","receptive aphasia","Difficulty understanding spoken or written words.","t"],
+  ["nerv","CVA / stroke","Occurs when blood supply to part of the brain is blocked or a blood vessel leaks or ruptures within the brain; quick response is critical and can reduce severity.","c"],
+  ["nerv","Parkinson's disease (PD)","Progressive, incurable, degenerative disease that causes stiff muscles, stooped posture, shuffling gait, pill-rolling, tremors, and a mask-like facial expression.","c"],
+  ["nerv","multiple sclerosis (MS)","Progressive disease of the central nervous system in which the myelin sheath breaks down and nerves cannot send messages properly.","c"],
+  ["nerv","head injuries","Types include contusions, hematomas, skull fractures, scalp wounds, and concussions.","c"],
+  ["nerv","spinal cord injuries","Effects depend on the force of impact and where the spine is injured; rehabilitation and emotional support are needed.","c"],
+  ["circ","angina","Chest pain, pressure, or discomfort.","t"],
+  ["circ","diuretics","Medications that reduce fluid volume in the body.","t"],
+  ["circ","hypertension (HTN)","High blood pressure, regularly measuring 130/80 mm Hg or higher.","t"],
+  ["circ","coronary artery disease (CAD)","Vessels in the coronary arteries narrow, reducing blood flow to the heart; the main symptom is angina.","c"],
+  ["circ","myocardial infarction (MI)","Blood flow to the heart muscle is blocked; symptoms include chest pain, perspiration, and dyspnea; needs emergency care and CPR, then cardiac rehabilitation.","c"],
+  ["circ","heart failure (HF)","The heart muscle fails to pump because of damage; symptoms include fatigue, rapid or irregular heartbeat, and shortness of breath.","c"],
+  ["circ","peripheral vascular disease (PVD)","Fatty deposits in the blood vessels harden over time; legs, feet, arms, and hands feel cold, and nail beds and/or feet become ashen or blue.","c"],
+  ["resp","dyspnea","Difficulty breathing.","t"],
+  ["resp","expiration","The process of exhaling air out of the lungs.","t"],
+  ["resp","inspiration","The process of inhaling air into the lungs.","t"],
+  ["resp","respiration","The process of breathing air into the lungs and exhaling air out of the lungs.","t"],
+  ["resp","chronic obstructive pulmonary disease (COPD)","Two lung diseases grouped together, chronic bronchitis and emphysema; high risk for lung infections, and all body systems are affected.","c"],
+  ["uri","urinary incontinence","The inability to control the bladder, which leads to an involuntary loss of urine.","t"],
+  ["gi","absorption","The transfer of nutrients from the intestines to the cells.","t"],
+  ["gi","constipation","The inability to eliminate stool, or the infrequent, difficult, and often painful elimination of a hard, dry stool.","t"],
+  ["gi","digestion","The process of preparing food physically and chemically so that it can be absorbed into the cells.","t"],
+  ["gi","elimination","The process of expelling wastes (made up of the waste products of food and fluids) that are not absorbed into the cells.","t"],
+  ["gi","enema","A specific amount of water, with or without an additive, that is introduced into the colon to stimulate the elimination of stool.","t"],
+  ["gi","fecal incontinence","The inability to control the bowels, leading to involuntary passage of stool.","t"],
+  ["gi","ostomy","A surgically created opening from an area inside the body to the outside.","t"],
+  ["gi","stoma","An artificial opening in the body.","t"],
+  ["gi","fecal impaction","Hard stool that is stuck in the rectum and cannot be expelled; caused by unrelieved constipation.","c"],
+  ["gi","hemorrhoids","Enlarged veins in the rectum and outside the anus; cause rectal itching, burning, pain, and bleeding during elimination.","c"],
+  ["gi","diarrhea","Caused by bacterial and viral infections, microorganisms in food and water, irritating foods, and medications; treated with medication, certain fluids, and a temporary change of diet.","c"],
+  ["gi","GERD","Chronic condition in which the liquid contents of the stomach back up into the esophagus; heartburn is the most common symptom.","c"],
+  ["endo","diabetes","A condition in which the pancreas produces too little insulin or does not properly use insulin.","t"],
+  ["endo","gestational diabetes","Type of diabetes that appears in pregnant women who have never had diabetes before but who have high glucose levels during pregnancy.","t"],
+  ["endo","glands","Organs that produce and secrete chemicals called hormones.","t"],
+  ["endo","glucose","Natural sugar.","t"],
+  ["endo","hormones","Chemical substances created by the body that control numerous body functions.","t"],
+  ["endo","insulin","A hormone that converts glucose from the blood into the cells for energy for the body.","t"],
+  ["endo","prediabetes","A condition in which a person's blood glucose levels are above normal but not high enough for a diagnosis of type 2 diabetes.","t"],
+  ["repro","gonads","Sex glands.","t"],
+  ["repro","reproduce","To create new human life.","t"],
+  ["repro","vaginitis","Caused by bacteria, protozoa, or fungus; symptoms are white vaginal discharge, itching, and burning; treated with oral medications or vaginal creams.","c"],
+  ["repro","bacterial vaginosis (BV)","An overgrowth of the normal bacteria inside the vagina.","c"],
+  ["imm","HIV","A virus that attacks the immune system and weakens and disables it.","c"],
+  ["imm","AIDS","The final stage of HIV infection; diagnosed when a person's CD4 count falls to 200 or below or they have certain opportunistic infections.","c"],
+  ["imm","cancer","A general term describing many types of tumors, which can be benign or malignant; there is no known cure.","c"],
+  // Lists from the notes (flashcards and glossary only)
+  ["circ","Hypertension: causes, symptoms, care",["Causes: atherosclerosis, kidney disease, adrenal tumors, pregnancy, or certain medications","Symptoms: headache, blurred vision, dizziness","Care: medication, exercise, low-fat/low-sodium diet"],"l"],
+  ["circ","When a resident has angina",["Encourage rest","Nitroglycerin should be close by","Tell the nurse if a nitroglycerin patch comes off","They may need to avoid heavy meals, overeating, intense exercise, and exposure to cold, hot, or humid weather"],"l"],
+  ["circ","Heart failure care",["Medications, fluid reduction, low-sodium diet, limited activity","Intake and output measurements, weight measurements","Compression stockings, ROM exercises, extra pillows"],"l"],
+  ["circ","PVD care",["Quitting smoking","Medications","Exercise","Surgery"],"l"],
+  ["nerv","MS symptoms",["Blurred vision, fatigue, tremors, poor balance, trouble walking","Weakness, numbness, tingling","Incontinence, behavior changes"],"l"],
+  ["uri","Care for residents with incontinence",["Offer help with elimination often","Answer call lights immediately","Document carefully any time a resident's skin is wet from urine","Provide careful skin care and observe skin carefully","Change wet clothes and/or disposable briefs promptly","Encourage fluids"],"l"],
+  ["gi","Constipation: causes, symptoms, treatment",["Causes: aging, decreased fluid intake, poor diet, inactivity, medications, disease, or ignoring the urge to eliminate","Symptoms: abdominal swelling, gas, irritability, no recent bowel movement","Treatment: more fiber and fluids, more activity, possibly medication"],"l"],
+  ["gi","Fecal impaction symptoms",["No stool for several days","Oozing of liquid stool","Cramping, abdominal swelling, rectal pain"],"l"],
+  ["gi","Hemorrhoid causes",["Constipation, obesity, pregnancy, chronic diarrhea","Overuse of enemas or laxatives","Straining during bowel movements"],"l"],
+  ["endo","Aging changes in the endocrine system",["Lower hormone levels","Decreased production of insulin","Body is less able to handle stress"],"l"],
+  ["endo","Diabetes facts",["Glucose collects in the blood, causing circulatory problems","Two major types: type 1 and type 2","Other types: prediabetes and gestational diabetes"],"l"],
+  ["imm","Aging changes in the immune and lymphatic systems",["Weakened immune system","Slow recovery rate","Decrease in bone marrow activity and number of lymph nodes","Decreased response to vaccines"],"l"],
+  ["imm","Three stages of HIV infection",["Acute HIV infection","Chronic HIV infection","AIDS (the final stage)"],"l"],
+  ["imm","Risk factors for cancer",["Genetic factors","Tobacco use","Alcohol use","Poor diet/obesity","Lack of physical activity","Certain infections","Environmental exposure, such as radiation","Sun exposure"],"l"],
+  ["imm","Warning signs of cancer",["Unexplained weight loss, fever, fatigue, pain","Skin changes; change in bowel or bladder function","Sores that do not heal; unusual bleeding or discharge","Thickening or lumps in the body; indigestion or difficulty swallowing","New mole or recent change in a mole, wart, or spot","Nagging cough or hoarseness"],"l"],
+  ["imm","Treatments for cancer",["Surgery","Chemotherapy (side effects: nausea, vomiting, diarrhea, oral sores, hair loss, fatigue, lower resistance to infection)","Radiation therapy","Targeted therapy","Immunotherapy","Hormone therapy"],"l"],
+].map(([unit, term, def, kind], i) => ({ id: i, unit, term, def, kind }));
+
+const $ = (s, el = document) => el.querySelector(s);
+const h = (tag, props = {}, ...kids) => {
+  const el = document.createElement(tag);
+  for (const [k, v] of Object.entries(props)) {
+    if (k === "class") el.className = v;
+    else if (k.startsWith("on")) el.addEventListener(k.slice(2), v);
+    else if (v !== false && v != null) el.setAttribute(k, v === true ? "" : v);
+  }
+  for (const kid of kids.flat()) if (kid != null && kid !== false) el.append(kid instanceof Node ? kid : String(kid));
+  return el;
+};
+const shuffle = (a) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const store = {
+  get(k, d) { try { const v = localStorage.getItem("bss:" + k); return v == null ? d : JSON.parse(v); } catch { return d; } },
+  set(k, v) { try { localStorage.setItem("bss:" + k, JSON.stringify(v)); } catch {} },
+};
+const defNode = (item) => Array.isArray(item.def) ? h("ul", {}, item.def.map((x) => h("li", {}, x))) : item.def;
+
+/* ---------- unit filter ---------- */
+let units = new Set(store.get("units", []));
+const inUnits = (it) => units.size === 0 || units.has(it.unit);
+function renderUnits() {
+  const box = $("#units");
+  box.replaceChildren(
+    h("button", { class: "chip", "aria-pressed": units.size === 0 ? "true" : "false", onclick: () => { units.clear(); unitsChanged(); } }, "All systems"),
+    ...Object.entries(UNITS).map(([k, name]) => h("button", { class: "chip", "aria-pressed": units.has(k) ? "true" : "false",
+      onclick: () => { units.has(k) ? units.delete(k) : units.add(k); unitsChanged(); } }, name)),
+  );
+}
+function unitsChanged() { store.set("units", [...units]); renderUnits(); resetCards(); renderQuizSetup(); renderTerms(); }
+
+/* ---------- flashcards ---------- */
+const fc = { deck: [], i: 0, flipped: false, defFirst: store.get("defFirst", false), lists: store.get("lists", true) };
+function resetCards(shuffled = false) {
+  const base = DATA.filter((d) => inUnits(d) && (fc.lists || d.kind !== "l"));
+  fc.deck = shuffled ? shuffle(base) : base; fc.i = 0; fc.flipped = false; renderCards();
+}
+function renderCards() {
+  const v = $("#view-cards");
+  const it = fc.deck[fc.i];
+  const listCard = it && it.kind === "l";
+  const showDefFront = it && fc.defFirst && !listCard;
+  const card = !it ? h("div", { class: "card" }, h("p", { class: "muted" }, "No cards for this filter.")) :
+    h("button", { class: "card", id: "flashcard", "aria-label": fc.flipped ? "Card, answer showing. Click to flip back." : "Card. Click to show the answer.", onclick: flip },
+      h("div", { class: "tagline" }, h("span", { class: "tag" }, UNITS[it.unit]), h("span", { class: "side" }, listCard ? "List" : showDefFront ? "Definition" : "Term")),
+      showDefFront ? h("div", { class: "front def" }, it.def) : h("div", { class: "front" }, it.term),
+      fc.flipped ? h("div", { class: "back" + (showDefFront ? " term" : "") }, showDefFront ? it.term : defNode(it))
+                 : h("div", { class: "muted" }, "Tap the card or press Space to flip"));
+  v.replaceChildren(
+    h("div", { class: "row" },
+      h("button", { class: "btn", id: "dir", onclick: () => { fc.defFirst = !fc.defFirst; store.set("defFirst", fc.defFirst); fc.flipped = false; renderCards(); } },
+        fc.defFirst ? "Showing: definition first" : "Showing: term first"),
+      h("button", { class: "btn", id: "lists", onclick: () => { fc.lists = !fc.lists; store.set("lists", fc.lists); resetCards(); } },
+        fc.lists ? "Lists: included" : "Lists: hidden"),
+      h("span", { class: "grow" }),
+      h("button", { class: "btn", onclick: () => resetCards(true) }, "Shuffle")),
+    card,
+    h("div", { class: "row" },
+      h("button", { class: "btn", onclick: () => go(-1), disabled: fc.i === 0 }, "Previous"),
+      h("span", { class: "grow mono muted", style: "text-align:center" }, fc.deck.length ? `${fc.i + 1} / ${fc.deck.length}` : "0 / 0"),
+      h("button", { class: "btn primary", onclick: () => go(1), disabled: fc.i >= fc.deck.length - 1 }, "Next")),
+  );
+}
+function flip() { fc.flipped = !fc.flipped; renderCards(); $("#flashcard")?.focus(); }
+function go(d) { fc.i = Math.max(0, Math.min(fc.deck.length - 1, fc.i + d)); fc.flipped = false; renderCards(); }
+document.addEventListener("keydown", (e) => {
+  if (view !== "cards" || /TEXTAREA|SELECT/.test(e.target.tagName)) return;
+  if (e.key === " ") { e.preventDefault(); flip(); }
+  else if (e.key === "ArrowRight") go(1);
+  else if (e.key === "ArrowLeft") go(-1);
+});
+
+/* ---------- multiple choice ---------- */
+// Every question pairs a term with its own definition from the notes. Wrong options are other
+// terms' definitions (or other terms), so exactly one option is correct by construction.
+const QUIZ_POOL = DATA.filter((d) => d.kind !== "l");
+const quiz = { len: store.get("qlen", 20), mode: store.get("qmode", "mixed"), qs: [], i: 0, score: 0, picked: null, missed: [] };
+function makeQuestion(item, dir) {
+  const sameUnit = shuffle(QUIZ_POOL.filter((d) => d.id !== item.id && d.unit === item.unit));
+  const sameKind = shuffle(QUIZ_POOL.filter((d) => d.id !== item.id && d.unit !== item.unit && d.kind === item.kind));
+  const rest = shuffle(QUIZ_POOL.filter((d) => d.id !== item.id && d.unit !== item.unit && d.kind !== item.kind));
+  const field = dir === "term" ? "def" : "term";
+  const seen = new Set([item[field].toLowerCase()]);
+  const wrong = [];
+  for (const d of [...sameUnit.slice(0, 2), ...sameKind, ...sameUnit.slice(2), ...rest]) {
+    const t = d[field].toLowerCase();
+    if (seen.has(t)) continue;
+    seen.add(t); wrong.push(d);
+    if (wrong.length === 3) break;
+  }
+  return { item, dir, options: shuffle([item, ...wrong]) };
+}
+function startQuiz(onlyItems) {
+  const pool = onlyItems || QUIZ_POOL.filter(inUnits);
+  const pairs = [];
+  for (const it of pool) {
+    if (quiz.mode !== "def") pairs.push([it, "term"]);
+    if (quiz.mode !== "term") pairs.push([it, "def"]);
+  }
+  const n = quiz.len === "all" || onlyItems ? pairs.length : Math.min(Number(quiz.len), pairs.length);
+  quiz.qs = shuffle(pairs).slice(0, n).map(([it, dir]) => makeQuestion(it, dir));
+  quiz.i = 0; quiz.score = 0; quiz.picked = null; quiz.missed = [];
+  renderQuestion();
+}
+function renderQuizSetup() {
+  const v = $("#view-quiz");
+  const pool = QUIZ_POOL.filter(inUnits);
+  const total = pool.length * (quiz.mode === "mixed" ? 2 : 1);
+  v.replaceChildren(
+    h("div", { class: "q" },
+      h("div", { class: "prompt" }, h("b", {}, "Quiz yourself")),
+      h("p", { class: "muted", style: "margin:0" }, `${pool.length} terms and conditions in this filter, ${total} possible questions. Some questions give you the term and ask for its meaning; others give you the meaning and ask for the term.`),
+      h("div", { class: "row" },
+        h("label", { class: "field" }, "Question type",
+          h("select", { id: "qmode", onchange: (e) => { quiz.mode = e.target.value; store.set("qmode", quiz.mode); renderQuizSetup(); } },
+            h("option", { value: "mixed", selected: quiz.mode === "mixed" }, "Both directions"),
+            h("option", { value: "term", selected: quiz.mode === "term" }, "Term → pick the definition"),
+            h("option", { value: "def", selected: quiz.mode === "def" }, "Definition → pick the term"))),
+        h("label", { class: "field" }, "How many",
+          h("select", { id: "qlen", onchange: (e) => { quiz.len = e.target.value; store.set("qlen", quiz.len); } },
+            ...["10", "20", "40"].map((n) => h("option", { value: n, selected: String(quiz.len) === n }, n)),
+            h("option", { value: "all", selected: quiz.len === "all" }, `All (${total})`)))),
+      h("div", { class: "row" }, h("button", { class: "btn primary", onclick: () => startQuiz(), disabled: !pool.length }, "Start quiz"))),
+  );
+}
+function renderQuestion() {
+  const v = $("#view-quiz");
+  const q = quiz.qs[quiz.i];
+  if (!q) return renderResults();
+  const answered = quiz.picked != null;
+  const prompt = q.dir === "term"
+    ? h("div", { class: "prompt" }, "What does ", h("b", {}, q.item.term), " mean?")
+    : h("div", { class: "prompt" }, "Which term matches this definition?", h("br"), h("span", { style: "font-size:20px" }, "“" + q.item.def + "”"));
+  const opts = h("div", { class: "opts" }, q.options.map((o, k) => {
+    let cls = "opt";
+    if (answered && o.id === q.item.id) cls += " right";
+    else if (answered && o.id === quiz.picked) cls += " wrong";
+    return h("button", { class: cls, disabled: answered, onclick: () => pick(o.id) },
+      h("span", { class: "k" }, "ABCD"[k]), h("span", {}, q.dir === "term" ? o.def : o.term));
+  }));
+  let fb = null;
+  if (answered) {
+    const ok = quiz.picked === q.item.id;
+    const chosen = QUIZ_POOL.find((d) => d.id === quiz.picked);
+    fb = h("div", { class: "feedback" },
+      h("strong", { class: ok ? "ok" : "no" }, ok ? "Correct. " : "Not quite. "),
+      h("span", {}, h("b", {}, q.item.term), ": " + q.item.def),
+      !ok ? h("div", { class: "muted", style: "margin-top:6px" }, "You picked ", h("b", {}, chosen.term), ", which means: " + chosen.def) : null);
+  }
+  v.replaceChildren(
+    h("div", { class: "row" }, h("span", { class: "mono muted" }, `Question ${quiz.i + 1} of ${quiz.qs.length}`), h("span", { class: "grow" }),
+      h("span", { class: "mono muted" }, `${quiz.score} correct`), h("button", { class: "btn", onclick: renderQuizSetup }, "End quiz")),
+    h("div", { class: "bar" }, h("i", { style: `width:${(quiz.i / quiz.qs.length) * 100}%` })),
+    h("div", { class: "q" }, h("div", { class: "tagline" }, h("span", { class: "tag" }, UNITS[q.item.unit])), prompt, opts, fb,
+      answered ? h("div", { class: "row" }, h("span", { class: "grow" }), h("button", { class: "btn primary", id: "next-q", onclick: nextQ }, quiz.i === quiz.qs.length - 1 ? "See results" : "Next question")) : null),
+  );
+  if (answered) $("#next-q")?.focus();
+}
+function pick(id) {
+  const q = quiz.qs[quiz.i];
+  quiz.picked = id;
+  if (id === q.item.id) quiz.score++;
+  else if (!quiz.missed.includes(q.item)) quiz.missed.push(q.item);
+  renderQuestion();
+}
+function nextQ() { quiz.i++; quiz.picked = null; renderQuestion(); }
+function renderResults() {
+  const v = $("#view-quiz");
+  const pct = Math.round((quiz.score / quiz.qs.length) * 100);
+  v.replaceChildren(h("div", { class: "q" },
+    h("div", { class: "prompt" }, h("b", {}, `${quiz.score} / ${quiz.qs.length}`), `  (${pct}%)`),
+    quiz.missed.length ? h("div", {}, h("p", { style: "margin:0 0 8px" }, "Review these:"),
+      h("ul", { class: "missed" }, quiz.missed.map((m) => h("li", {}, h("b", {}, m.term), ": " + m.def)))) : h("p", { style: "margin:0" }, "No misses. Nice work."),
+    h("div", { class: "row" },
+      quiz.missed.length ? h("button", { class: "btn primary", onclick: () => startQuiz(quiz.missed.slice()) }, "Retry the ones I missed") : null,
+      h("button", { class: "btn", onclick: () => startQuiz() }, "New quiz"),
+      h("button", { class: "btn", onclick: renderQuizSetup }, "Change settings"))));
+}
+
+/* ---------- all terms ---------- */
+function renderTerms() {
+  const items = DATA.filter(inUnits);
+  $("#view-terms").replaceChildren(h("dl", { class: "glossary" },
+    items.map((d) => h("div", { class: "gitem" }, h("dt", {}, d.term), h("dd", {}, defNode(d))))));
+}
+
+/* ---------- appearance (AXON's theme system, saved per person in this browser) ---------- */
+const KEYS = [
+  ["bg", "Background"], ["panel", "Panels"], ["line", "Borders"], ["text", "Text"], ["muted", "Soft text"],
+  ["accent", "Accent"], ["c2", "Highlight"], ["c3", "Secondary"], ["good", "Correct"], ["alert", "Wrong"],
+];
+const TOKEN = { bg: "--bg", panel: "--surface", line: "--line", text: "--ink", muted: "--muted", accent: "--accent", c2: "--c2", good: "--good", alert: "--bad" };
+const STUDY_LIGHT = { bg: "#eef3f1", panel: "#fbfdfc", line: "#cfdbd6", text: "#142420", muted: "#55665f", accent: "#1f6f78", c2: "#b86e00", c3: "#4b5fd6", good: "#1d7a46", alert: "#b23a2e" };
+const STUDY_DARK = { bg: "#0f1716", panel: "#16211f", line: "#2a3a37", text: "#e3ece9", muted: "#98aaa4", accent: "#5cc2c9", c2: "#ffb547", c3: "#8aa9ff", good: "#5fd08e", alert: "#f08a7c" };
+const AX_DARK = { bg: "#050b12", panel: "#0a1622", line: "#1d5468", text: "#d8f3ff", muted: "#6f97a8", accent: "#33e1ff", c2: "#ffb547", c3: "#8aa9ff", good: "#3ee0a0", alert: "#ff4d5e" };
+const AX_LIGHT = { bg: "#f3f6f9", panel: "#ffffff", line: "#c6d5e0", text: "#0f2230", muted: "#587080", accent: "#0a7fc0", c2: "#b86e00", c3: "#4b5fd6", good: "#138a5b", alert: "#d33246" };
+const PRESETS = [
+  { id: "axon-dark", name: "AXON Dark", base: "dark", colors: AX_DARK },
+  { id: "axon-light", name: "AXON Light", base: "light", colors: AX_LIGHT },
+  { id: "red-dark", name: "AXON Red Dark", base: "dark", colors: { bg: "#0e0708", panel: "#1a0d10", line: "#5e2229", text: "#ffe9eb", muted: "#b48a8f", accent: "#ff3b4e", c2: "#ffb547", c3: "#8aa9ff", good: "#3ee0a0", alert: "#ff8a3d" } },
+  { id: "red-light", name: "AXON Red Light", base: "light", colors: { bg: "#faf4f4", panel: "#ffffff", line: "#ebcdd0", text: "#2a1013", muted: "#7d5a5e", accent: "#d0202f", c2: "#b86e00", c3: "#4b5fd6", good: "#138a5b", alert: "#d9620f" } },
+  { id: "violet", name: "Midnight Violet", base: "dark", colors: { bg: "#0d0a1a", panel: "#161129", line: "#3b2f6b", text: "#ece6ff", muted: "#9a8fc2", accent: "#a78bfa", c2: "#f472b6", c3: "#60a5fa", good: "#34d399", alert: "#fb7185" } },
+  { id: "forest", name: "Forest", base: "dark", colors: { bg: "#0b130e", panel: "#121e16", line: "#2c4a36", text: "#e3f1e7", muted: "#8aa894", accent: "#4ade80", c2: "#facc15", c3: "#38bdf8", good: "#86efac", alert: "#f87171" } },
+  { id: "ember", name: "Ember", base: "dark", colors: { bg: "#140c08", panel: "#1f140e", line: "#5a3420", text: "#fbe9dd", muted: "#b8917b", accent: "#ff8a3d", c2: "#ffd166", c3: "#f472b6", good: "#7bd88f", alert: "#ff5c5c" } },
+  { id: "mono", name: "Graphite", base: "dark", colors: { bg: "#0e0e0f", panel: "#18181a", line: "#36363a", text: "#ededed", muted: "#9a9a9e", accent: "#f2f2f2", c2: "#c9c9c9", c3: "#8f8f95", good: "#a3e635", alert: "#f87171" } },
+  { id: "paper", name: "Paper", base: "light", colors: { bg: "#f6f1e7", panel: "#fffaf0", line: "#dccfb6", text: "#2f2618", muted: "#7b6a50", accent: "#9a5b13", c2: "#2f6f8f", c3: "#7a4ea3", good: "#3d7d3a", alert: "#b23a3a" } },
+  { id: "ocean", name: "Ocean", base: "light", colors: { bg: "#eef6fb", panel: "#ffffff", line: "#c2dbe9", text: "#0d2a3a", muted: "#4f6e80", accent: "#0077b6", c2: "#e76f51", c3: "#6a4c93", good: "#2a9d8f", alert: "#d62828" } },
+  { id: "rose", name: "Rose", base: "light", colors: { bg: "#fdf2f5", panel: "#ffffff", line: "#f1c9d5", text: "#3a1622", muted: "#8d5a69", accent: "#d6336c", c2: "#7048e8", c3: "#1c7ed6", good: "#2b8a3e", alert: "#c92a2a" } },
+  { id: "contrast", name: "High contrast", base: "dark", colors: { bg: "#000000", panel: "#000000", line: "#ffffff", text: "#ffffff", muted: "#e0e0e0", accent: "#ffde00", c2: "#00e5ff", c3: "#ff80ff", good: "#00ff7f", alert: "#ff5050" } },
+];
+const FONTS = [
+  ["study", "Study set (Atkinson Hyperlegible)", null, null],
+  ["tech", "Tech (Chakra Petch)", '"Chakra Petch", system-ui, sans-serif', '"Chakra Petch", system-ui, sans-serif'],
+  ["clean", "Clean (Figtree)", '"Figtree", system-ui, sans-serif', '"Figtree", system-ui, sans-serif'],
+  ["mono", "Code (JetBrains Mono)", '"JetBrains Mono", ui-monospace, Consolas, monospace', '"JetBrains Mono", ui-monospace, Consolas, monospace'],
+  ["serif", "Bookish (Merriweather)", '"Merriweather", Georgia, serif', '"Merriweather", Georgia, serif'],
+  ["lexend", "Easy reading (Lexend)", '"Lexend", system-ui, sans-serif', '"Lexend", system-ui, sans-serif'],
+];
+const theme = Object.assign({ base: "auto", preset: null, style: "clean", glow: true, motion: true, font: "study", size: 100, custom: [] }, store.get("theme", {}));
+const lum = (hex) => {
+  const n = parseInt(hex.slice(1), 16), c = [n >> 16, (n >> 8) & 255, n & 255].map((v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; });
+  return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+};
+function resolveTheme(t) {
+  const p = t.preset && [...PRESETS, ...t.custom].find((x) => x.id === t.preset);
+  if (p) return { base: p.base, colors: { ...(p.base === "light" ? STUDY_LIGHT : STUDY_DARK), ...p.colors } };
+  if (t.base === "light") return { base: "light", colors: STUDY_LIGHT };
+  if (t.base === "dark") return { base: "dark", colors: STUDY_DARK };
+  return null; // auto: the page's own light/dark tokens follow the device
+}
+function applyTheme(t, override) {
+  const r = document.documentElement, res = override || resolveTheme(t);
+  for (const v of [...Object.values(TOKEN), "--accent-ink", "--shadow", "--f-body", "--f-display"]) r.style.removeProperty(v);
+  r.style.removeProperty("color-scheme");
+  if (res) {
+    for (const [k, v] of Object.entries(TOKEN)) r.style.setProperty(v, res.colors[k]);
+    r.style.setProperty("--accent-ink", lum(res.colors.accent) > 0.35 ? "#081018" : "#ffffff");
+    if (res.base === "dark") r.style.setProperty("--shadow", "0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25)");
+    r.style.colorScheme = res.base;
+  }
+  const f = FONTS.find((x) => x[0] === t.font);
+  if (f?.[2]) { r.style.setProperty("--f-body", f[2]); r.style.setProperty("--f-display", f[3]); }
+  r.dataset.style = t.style;
+  r.dataset.glow = t.glow ? "on" : "off";
+  r.dataset.motion = t.motion ? "on" : "off";
+  r.style.setProperty("--zoom", String((t.size || 100) / 100));
+}
+function saveTheme() { store.set("theme", theme); applyTheme(theme); drawAppear(); }
+function openAppear() { $("#appear").hidden = false; drawAppear(); $("#appear-sheet button")?.focus(); }
+function closeAppear() { applyTheme(theme); $("#appear").hidden = true; $("#open-appear").focus(); }
+$("#open-appear").onclick = openAppear;
+$("#appear").addEventListener("click", (e) => { if (e.target.id === "appear") closeAppear(); });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !$("#appear").hidden) closeAppear(); });
+const themeCode = (c) => "AXON-THEME:" + btoa(unescape(encodeURIComponent(JSON.stringify({ name: c.name, base: c.base, colors: c.colors }))));
+function drawAppear() {
+  const sheet = $("#appear-sheet");
+  if ($("#appear").hidden) return;
+  const all = [...PRESETS, ...theme.custom];
+  const seg = (items, cur, on) => h("div", { class: "seg" }, items.map(([k, n]) => h("button", { type: "button", "aria-pressed": String(cur === k), onclick: () => on(k) }, n)));
+  const swatch = (p) => h("div", { class: "sw" }, ["bg", "panel", "accent", "c2", "good"].map((k) => h("i", { style: `background:${p.colors[k]}` })));
+  const studyCard = { colors: STUDY_LIGHT };
+  sheet.replaceChildren(
+    h("div", { class: "row" }, h("h2", { class: "grow" }, "Appearance"), h("button", { class: "btn", type: "button", onclick: closeAppear }, "Done")),
+    h("div", { class: "optrow" }, h("span", { class: "lab" }, "Mode"),
+      seg([["auto", "Match device"], ["light", "Light"], ["dark", "Dark"]], theme.preset ? "" : theme.base, (k) => { theme.base = k; theme.preset = null; saveTheme(); })),
+    h("div", { class: "optrow" }, h("span", { class: "lab" }, "Style"),
+      seg([["clean", "Clean"], ["hud", "HUD"]], theme.style, (k) => { theme.style = k; saveTheme(); }),
+      h("label", { class: "row", style: "gap:6px;font-size:14px" }, h("input", { type: "checkbox", id: "glow", checked: theme.glow, disabled: theme.style !== "hud", onchange: (e) => { theme.glow = e.target.checked; saveTheme(); } }), "Glow"),
+      h("label", { class: "row", style: "gap:6px;font-size:14px" }, h("input", { type: "checkbox", id: "motion", checked: theme.motion, onchange: (e) => { theme.motion = e.target.checked; saveTheme(); } }), "Animations")),
+    h("div", { class: "optrow" }, h("label", { class: "lab", for: "font-pick" }, "Font"),
+      h("select", { id: "font-pick", onchange: (e) => { theme.font = e.target.value; saveTheme(); } }, FONTS.map(([k, n]) => h("option", { value: k, selected: theme.font === k }, n)))),
+    h("div", { class: "optrow" }, h("label", { class: "lab", for: "size-pick" }, "Text size"),
+      h("input", { type: "range", id: "size-pick", min: "85", max: "135", step: "5", value: String(theme.size),
+        oninput: (e) => { theme.size = +e.target.value; e.target.nextElementSibling.textContent = theme.size + "%"; applyTheme(theme); },
+        onchange: () => saveTheme() }),
+      h("span", { class: "mono" }, theme.size + "%")),
+    h("h3", {}, "Themes"),
+    h("div", { class: "presets" },
+      h("button", { type: "button", class: "preset", "aria-pressed": String(!theme.preset), onclick: () => { theme.preset = null; saveTheme(); } }, swatch(studyCard), h("b", {}, "Study set (default)")),
+      all.map((p) => h("div", { class: "preset", role: "button", tabindex: "0", "aria-pressed": String(theme.preset === p.id),
+        onclick: (e) => { if (e.target.closest(".pacts")) return; theme.preset = p.id; saveTheme(); },
+        onkeydown: (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); theme.preset = p.id; saveTheme(); } } },
+        swatch(p), h("b", {}, p.name),
+        p.custom ? h("span", { class: "pacts" },
+          h("button", { type: "button", class: "linkbtn", onclick: () => openEditor(p) }, "edit"),
+          h("button", { type: "button", class: "linkbtn", onclick: () => shareTheme(p) }, "share"),
+          h("button", { type: "button", class: "linkbtn", onclick: () => { theme.custom = theme.custom.filter((c) => c.id !== p.id); if (theme.preset === p.id) theme.preset = null; saveTheme(); } }, "delete")) : null))),
+    h("div", { class: "row" },
+      h("button", { class: "btn primary", type: "button", onclick: () => openEditor(null) }, "+ Create custom theme"),
+      h("button", { class: "btn", type: "button", onclick: openImport }, "Import theme code")),
+    h("div", { class: "editor", id: "theme-editor" }),
+  );
+}
+async function shareTheme(c) {
+  const code = themeCode(c), ed = $("#theme-editor");
+  const field = h("input", { class: "field", id: "share-code", value: code, readonly: true });
+  ed.replaceChildren(h("p", { class: "note" }, "Theme code for “" + c.name + "”. Send it to a friend; it also works in the AXON app."), field);
+  try { await navigator.clipboard.writeText(code); ed.firstChild.textContent = "Copied! Send this code to a friend; it also works in the AXON app."; }
+  catch { field.focus(); field.select(); }
+}
+function openImport() {
+  const ed = $("#theme-editor");
+  const input = h("input", { class: "field", id: "import-code", placeholder: "AXON-THEME:…" });
+  const msg = h("p", { class: "note" }, "Paste a theme code someone shared with you (from this page or the AXON app):");
+  ed.replaceChildren(msg, h("div", { class: "row" }, input, h("button", { class: "btn primary", type: "button", onclick: () => {
+    try {
+      const d = JSON.parse(decodeURIComponent(escape(atob(input.value.trim().replace(/^AXON-THEME:/, "")))));
+      const colors = {};
+      for (const [k] of KEYS) if (/^#[0-9a-f]{6}$/i.test(d.colors?.[k])) colors[k] = d.colors[k];
+      if (Object.keys(colors).length < 5) throw 0;
+      const nt = { id: "c" + Date.now().toString(36), name: String(d.name || "Shared theme").slice(0, 40), base: d.base === "light" ? "light" : "dark", colors, custom: true };
+      theme.custom.push(nt); theme.preset = nt.id; saveTheme();
+    } catch { msg.textContent = "That code isn't a valid AXON theme. Check you copied all of it."; }
+  } }, "Add theme")));
+  input.focus();
+}
+function openEditor(existing) {
+  const cur = resolveTheme(theme) || { base: matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light", colors: matchMedia("(prefers-color-scheme: dark)").matches ? STUDY_DARK : STUDY_LIGHT };
+  const draft = existing ? { id: existing.id, name: existing.name, base: existing.base, colors: { ...existing.colors } } : { id: null, name: "My theme", base: cur.base, colors: { ...cur.colors } };
+  const ed = $("#theme-editor");
+  const preview = () => applyTheme(theme, { base: draft.base, colors: draft.colors });
+  const name = h("input", { class: "field", id: "theme-name", value: draft.name, maxlength: "40", "aria-label": "Theme name" });
+  const baseSeg = h("div", { class: "seg" }, ["dark", "light"].map((b) => h("button", { type: "button", "aria-pressed": String(draft.base === b),
+    onclick: (e) => { draft.base = b; for (const x of baseSeg.children) x.setAttribute("aria-pressed", String(x === e.currentTarget)); preview(); } }, b === "dark" ? "Dark base" : "Light base")));
+  ed.replaceChildren(
+    h("h3", {}, existing ? "Edit theme" : "New custom theme"),
+    h("div", { class: "optrow" }, name, baseSeg),
+    h("div", { class: "colors" }, KEYS.map(([k, n]) => h("label", {}, h("input", { type: "color", value: draft.colors[k], oninput: (e) => { draft.colors[k] = e.target.value; preview(); } }), n))),
+    h("p", { class: "note" }, "Changes preview live across the whole page."),
+    h("div", { class: "row" },
+      h("button", { class: "btn", type: "button", onclick: () => { applyTheme(theme); ed.replaceChildren(); } }, "Cancel"),
+      h("button", { class: "btn primary", type: "button", onclick: () => {
+        draft.name = name.value.trim() || "My theme";
+        if (draft.id) Object.assign(theme.custom.find((c) => c.id === draft.id), draft);
+        else { draft.id = "c" + Date.now().toString(36); theme.custom.push({ ...draft, custom: true }); }
+        theme.preset = draft.id; saveTheme();
+      } }, "Save theme")),
+  );
+  preview();
+  ed.scrollIntoView({ block: "nearest" });
+}
+applyTheme(theme);
+
+/* ---------- views ---------- */
+let view = "cards";
+function show(name) {
+  if (!["cards", "quiz", "terms"].includes(name)) name = "cards";
+  view = name;
+  for (const t of document.querySelectorAll(".tab")) t.setAttribute("aria-selected", String(t.dataset.view === name));
+  for (const n of ["cards", "quiz", "terms"]) $("#view-" + n).hidden = n !== name;
+  store.set("view", name);
+}
+for (const t of document.querySelectorAll(".tab")) t.addEventListener("click", () => show(t.dataset.view));
+renderUnits(); resetCards(); renderQuizSetup(); renderTerms();
+show(location.hash.slice(1) || store.get("view", "cards"));
+</script>
+
+</body></html>
